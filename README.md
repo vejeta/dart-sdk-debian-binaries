@@ -9,8 +9,10 @@ directly.
 
 Built from the source already in unstable, `dart-sdk_3.13.4+dfsg1-5.dsc`, under
 qemu-user emulation on an amd64 machine. Lintian reports 0 errors and 0
-warnings. The packaging lives at
-<https://salsa.debian.org/mendezr/dart-sdk>.
+warnings. The packaging lives at <https://salsa.debian.org/mendezr/dart-sdk>; this binary
+was built from commit
+[6b4aaeb](https://salsa.debian.org/mendezr/dart-sdk/-/commit/6b4aaeb), which is
+the `3.13.4+dfsg1-5` upload.
 
 ## Verifying
 
@@ -39,6 +41,15 @@ Re-sign with your own key and upload; `debsign` replaces the signature:
 
 ## Building it yourself instead
 
-`debian/README.source` in the packaging repository has the full recipe. It needs
-no riscv64 hardware and no root, about 11 GB of disk, and between two and five
-hours on an amd64 machine depending on how busy it is.
+The full recipe is in `debian/README.source`, under "Emulation: qemu-user does
+run the Dart VM", at the commit this binary was built from:
+
+<https://salsa.debian.org/mendezr/dart-sdk/-/blob/6b4aaeb/debian/README.source>
+
+The source itself comes from the archive, not from salsa, since salsa holds only
+`debian/`:
+
+    dget -x https://deb.debian.org/debian/pool/main/d/dart-sdk/dart-sdk_3.13.4+dfsg1-5.dsc
+
+It needs no riscv64 hardware and no root, about 11 GB of disk, and between two
+and five hours on an amd64 machine depending on how busy it is.
